@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iklan — Admin Panel Plaza BPJamsostek</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/favicon-32.png" sizes="32x32">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-brand">
+      <img src="../assets/logo.png" alt="Logo">
+      <span>PLAZA BPJAMSOSTEK<em>ADMIN PANEL</em></span>
+    </div>
+    <nav class="admin-nav">
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Utama</div>
+        <a href="index.html"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Foodcourt</div>
+        <a href="foodcourt.html"><svg viewBox="0 0 24 24"><path d="M5 4v8a3 3 0 0 0 3 3v7M5 4a2 2 0 0 0-2 2M8 4v8M11 4v8M17 4c-2 0-3 2-3 5v3h6v-3c0-3-1-5-3-5Zm0 8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>Tenant &amp; Menu</a>
+        <a href="orders.html"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 3h2l2.4 12.2a2 2 0 0 0 2 1.8h8.6a2 2 0 0 0 2-1.6L21 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>Pesanan</a>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Layanan</div>
+        <a href="complaints.html"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z" stroke-linecap="round" stroke-linejoin="round"/></svg>Komplain</a>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Pemasaran</div>
+        <a href="advertisements.html" class="active"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12Z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8h.01" stroke-linecap="round"/></svg>Iklan</a>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Segera Hadir</div>
+        <a href="#" style="opacity:.4;pointer-events:none;"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3" stroke-linecap="round"/></svg>Hero &amp; Konten Beranda</a>
+        <a href="#" style="opacity:.4;pointer-events:none;"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13M9 21v-7h6v7" stroke-linecap="round" stroke-linejoin="round"/></svg>Sewa Kantor</a>
+      </div>
+    </nav>
+    <div class="admin-sidebar-foot">
+      <div class="admin-user">
+        <div class="admin-user-avatar" id="adminUserAvatar">A</div>
+        <div><div class="admin-user-name" id="adminUserName">—</div><div class="admin-user-role" id="adminUserRole">—</div></div>
+      </div>
+      <button class="admin-logout" id="adminLogoutBtn">Keluar</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="admin-sidebar-toggle" id="sidebarToggle">☰</button>
+        <h1>Iklan &amp; Promosi Tenant</h1>
+      </div>
+      <a href="../iklan.html" target="_blank" class="btn btn-outline btn-sm">Lihat Halaman Iklan</a>
+    </div>
+    <div class="admin-content">
+
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h3>Iklan Tayang (Homepage Slider &amp; Halaman Iklan)</h3>
+          <button type="button" class="btn btn-primary btn-sm" id="addAdBtn">+ Tambah Iklan</button>
+        </div>
+        <p class="muted" style="padding:0 20px 12px;font-size:13px;">Iklan dengan status Aktif dan berada dalam periode tayang akan otomatis muncul di slider beranda dan halaman /iklan.html. Urutan tampil mengikuti kolom "Urutan".</p>
+        <div class="admin-table-wrap"><table class="admin-table">
+          <thead><tr><th>Urutan</th><th>Judul</th><th>Kategori</th><th>Periode</th><th>Status</th><th>Unggulan</th><th>Aksi</th></tr></thead>
+          <tbody id="adsBody"><tr class="admin-empty-row"><td colspan="7">Memuat...</td></tr></tbody>
+        </table></div>
+      </div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h3>Permintaan Iklan Masuk</h3>
+          <select id="reqStatusFilter" style="padding:8px 12px;border-radius:8px;border:1px solid var(--line);font-size:13px;">
+            <option value="all">Semua Status</option>
+            <option value="pending">Pending</option>
+            <option value="review">Review</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="active">Active</option>
+            <option value="expired">Expired</option>
+          </select>
+        </div>
+        <p class="muted" style="padding:0 20px 12px;font-size:13px;">Permintaan dari formulir "Ajukan Iklan" tidak pernah otomatis tayang. Tinjau lalu buat entri di tabel di atas secara manual setelah disetujui.</p>
+        <div class="admin-table-wrap"><table class="admin-table">
+          <thead><tr><th>No. Permintaan</th><th>Tenant</th><th>PIC / WhatsApp</th><th>Judul Iklan</th><th>Status</th><th>Waktu</th></tr></thead>
+          <tbody id="reqBody"><tr class="admin-empty-row"><td colspan="6">Memuat...</td></tr></tbody>
+        </table></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== AD FORM MODAL ===== -->
+<div class="modal" id="adFormModal" role="dialog" aria-modal="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel admin-modal-panel" style="max-width:680px;">
+    <button class="modal-close" aria-label="Tutup">&times;</button>
+    <div class="admin-form-body">
+      <h3 style="font-family:var(--display);margin:0 0 16px;" id="adFormTitle">Tambah Iklan</h3>
+      <form id="adForm">
+        <input type="hidden" id="af-id">
+        <div class="field-row">
+          <div class="field"><label>Judul (ID)</label><input type="text" id="af-title-id" required></div>
+          <div class="field"><label>Judul (EN)</label><input type="text" id="af-title-en"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Deskripsi (ID)</label><textarea id="af-desc-id"></textarea></div>
+          <div class="field"><label>Deskripsi (EN)</label><textarea id="af-desc-en"></textarea></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Nama Tenant</label><input type="text" id="af-tenant"></div>
+          <div class="field">
+            <label>Kategori</label>
+            <select id="af-category">
+              <option value="fnb">Food &amp; Beverage</option>
+              <option value="jasa">Jasa &amp; Layanan</option>
+              <option value="retail">Retail</option>
+              <option value="event">Acara</option>
+              <option value="korporat">Korporat</option>
+              <option value="promo">Promo Khusus</option>
+              <option value="pengumuman">Pengumuman</option>
+              <option value="lainnya" selected>Lainnya</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Gambar Iklan (rasio 16:9 disarankan)</label>
+          <input type="file" id="af-image-input" accept="image/*">
+          <img id="af-image-preview" class="tf-preview" alt="" style="max-width:220px;margin-top:8px;display:none;border-radius:6px;">
+          <input type="hidden" id="af-image-url">
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Teks CTA (ID)</label><input type="text" id="af-cta-id" placeholder="Lihat Promo"></div>
+          <div class="field"><label>Teks CTA (EN)</label><input type="text" id="af-cta-en" placeholder="View Promotion"></div>
+        </div>
+        <div class="field"><label>URL Tujuan (opsional)</label><input type="url" id="af-url" placeholder="https://"></div>
+        <div class="field-row">
+          <div class="field"><label>Tanggal Mulai</label><input type="date" id="af-start"></div>
+          <div class="field"><label>Tanggal Berakhir</label><input type="date" id="af-end"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Urutan Tampil</label><input type="number" id="af-order" value="0" min="0"></div>
+          <div class="field" style="display:flex;gap:20px;align-items:center;padding-top:26px;">
+            <label style="display:flex;align-items:center;gap:8px;font-weight:400;"><input type="checkbox" id="af-active" checked style="width:auto;"> Aktif</label>
+            <label style="display:flex;align-items:center;gap:8px;font-weight:400;"><input type="checkbox" id="af-featured" style="width:auto;"> Unggulan</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary full">Simpan Iklan</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="admin-toast" id="adminToast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/admin/auth-guard.js"></script>
+<script src="../js/admin/admin-common.js"></script>
+<script src="../js/admin/ads-admin.js"></script>
+</body>
+</html>
